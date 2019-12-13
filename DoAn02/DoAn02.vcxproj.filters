@@ -24,10 +24,10 @@
     <ClInclude Include="SachNgoaiVan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ThuVien.h">
+    <ClInclude Include="DocGia.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DocGia.h">
+    <ClInclude Include="ThuVien.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -45,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DocGia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

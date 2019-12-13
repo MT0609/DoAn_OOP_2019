@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DocGia.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Sach.cpp" />
     <ClCompile Include="SachNgoaiVan.cpp" />
     <ClCompile Include="SachTiengViet.cpp" />
