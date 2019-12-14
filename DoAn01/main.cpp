@@ -23,11 +23,12 @@ void main()
 	str.push_back('t');
 	cout << "Chuoi sau khi push_back: " << str << endl;
 
-	cout << "substring: ";
-	str.substr(str.length() - 4, 2).Output();
+	cout << endl << "substring: ";
+	str = str.substr(str.length() - 5);
+	cout << str << endl;
 
 	MyString str2;
-	cout << "Nhap chuoi thu 2: ";
+	cout << endl << "Nhap chuoi thu 2: ";
 	cin >> str2;
 	cout << str2 << endl;
 
@@ -112,16 +113,21 @@ void main()
 		e.erase(found);
 	else
 		e.clear();            // str is all whitespace
-
-	std::cout << '[' << e << "]\n";
+	cout << '[' << e << "]\n";
 
 	MyString f;
 	cout << endl << "Nhap chuoi test getline: ";
-	getline(cin, f);
+	getline(cin, f, '\t');
 	cout << "Chuoi vua nhap: " << f << endl;
-
 	const char* cstr = "test string";
 	if (memcmp(cstr, f.data(), f.length()) == 0)
 		cout << "str and cstr have the same content.\n";
+
+
+	cout << endl << "swap(x, y): " << endl;
+	swap(e, f);
+	cout << '\t' << e << endl;
+	cout << '\t' << f << endl;
+
 	system("pause");
 }

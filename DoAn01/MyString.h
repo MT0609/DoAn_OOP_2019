@@ -122,12 +122,9 @@ public:
 	size_t find_last_not_of(char c, size_t pos = npos) const;
 	size_t find_last_not_of(const MyString& str, size_t pos = npos) const;
 	size_t find_last_not_of(const char* s, size_t pos = npos) const;
-
-
-
 	char compare(const MyString& str);
-	MyString substr(int pos, int len);
-	
+	MyString substr(size_t pos = 0, size_t len = npos) const;
+
 	
 		// NON-MEMBER FUNCTION OVERLOADS
 	MyString operator+(const MyString& str);
@@ -137,7 +134,9 @@ public:
 	bool operator<=(const MyString& str);
 	bool operator==(const MyString& str);
 	bool operator!=(const MyString& str);
+	friend void swap(MyString& x, MyString& y);
 	friend istream& operator>>(istream& is, MyString &str);
 	friend ostream& operator<<(ostream& os, MyString & str);
 	friend istream& getline(istream& is, MyString &str);
+	friend istream& getline(istream& is, MyString& str, char delim);
 };

@@ -742,12 +742,12 @@ size_t MyString::find_last_not_of(const char * s, size_t pos) const
 	return npos;
 }
 
-MyString MyString::substr(int pos, int len)
+MyString MyString::substr(size_t pos, size_t len) const
 {
 	if (pos >= 0 && pos < this->len)
 	{
 		MyString str;
-		if (pos + len > this->len)
+		if (len == npos || pos + len > this->len)
 			len = this->len - pos;
 		for (int i = pos; i < pos + len; ++i)
 			str.push_back(this->a[i]);
@@ -756,6 +756,24 @@ MyString MyString::substr(int pos, int len)
 	return *this;
 }
 
+
+void swap(MyString & x, MyString & y)
+{
+	MyString new_x(y);
+	MyString new_y(x);
+
+	x.len = new_x.len;
+	x.a = (char*)realloc(x.a, x.len * sizeof(char));
+	for (int i = 0; i < x.len; ++i)
+		x.a[i] = new_x.a[i];
+	x.a[x.len] = '\0';
+
+	y.len = new_y.len;
+	y.a = (char*)realloc(y.a, y.len * sizeof(char));
+	for (int i = 0; i < y.len; ++i)
+		y.a[i] = new_y.a[i];
+	y.a[y.len] = '\0';
+}
 
 istream & operator>>(istream & is, MyString & str)
 {
@@ -811,7 +829,7 @@ ostream & operator<<(ostream & os, MyString & str)
 
 istream & getline(istream & is, MyString & str)
 {
-	char *c = new char[500];
+	char *c = new char[100];
 	is.get(c, 100);
 	int i = 0;
 	while (c[i] != '\n' && i < strlen(c))
@@ -819,6 +837,22 @@ istream & getline(istream & is, MyString & str)
 		str += c[i];
 		++i;
 	}
+	str.a[str.len] = '\0';
+	delete[]c;
+	return is;
+}
+
+istream & getline(istream & is, MyString & str, char delim)
+{
+	char *c = new char[100];
+	is.get(c, 100, delim);
+	int i = 0;
+	while (c[i] != delim && i < strlen(c))
+	{
+		str += c[i];
+		++i;
+	}
+	str.a[str.len] = '\0';
 	delete[]c;
 	return is;
 }
