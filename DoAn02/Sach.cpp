@@ -87,20 +87,24 @@ void Sach::set_TacGia(string tacgia)
 void Sach::Sua()
 {
 	int key;
-	cout << "Ban muon sua ma sach khong? ";
+	cout << "Ban muon sua ma sach khong (1 / other)? ";
 	cin >> key;
+
+	cin.ignore();
 	if (key == 1)
 	{
-		cout << "Nhap ma sach muon sua";
+		cout << "Nhap ma sach moi: ";
 		getline(cin, Ma);
 	}
+
 	cout << "Ban muon sua ten sach khong? ";
 	cin >> key;
 	if (key == 1)
 	{
-		cout << "Nhap ten sach muon sua";
+		cout << "Nhap ten sach moi: ";
 		getline(cin, Ten);
 	}
+
 	cout << "Ban muon sua nha xuat ban khong? ";
 	cin >> key;
 	if (key == 1)
@@ -108,12 +112,21 @@ void Sach::Sua()
 		cout << "Nhap ten nha xuat ban moi: ";
 		getline(cin, NXB);
 	}
-	cout << "Ban muon ten tac gia khong? ";
+
+	cout << "Ban muon sua ten tac gia khong? ";
 	cin >> key;
 	if (key == 1)
 	{
-		cout << "Nhap ma sach muon sua";
+		cout << "Nhap ten tac gia moi: ";
 		getline(cin, TacGia);
+	}
+
+	cout << "Ban muon sua gia sach khong? ";
+	cin >> key;
+	if (key == 1)
+	{
+		cout << "Nhap gia sach moi: ";
+		cin >> Gia;
 	}
 }
 

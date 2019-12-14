@@ -50,18 +50,16 @@ void DocGia::Nhap()
 	cout << "Nhap Ho ten doc gia: ";
 	getline(cin, HoTen);
 
-	string ma_sach;
-	cout << "Nhap ma sach muon: ";
-	getline(cin, ma_sach);
-	
 	int option;
-	
 	while (1)
 	{
-		cout << "Nhap sach muon? (1 / other)";
+		cout << "Tiep tuc nhap sach muon? (1 / other): ";
 		cin >> option;
 		if (option != 1)
 			break;
+		string ma_sach;
+		cout << "Nhap ma sach muon: ";
+		getline(cin, ma_sach);
 		Date date;
 		cout << "Nhap ngay muon (dd): ";
 		cin >> date.Ngay;

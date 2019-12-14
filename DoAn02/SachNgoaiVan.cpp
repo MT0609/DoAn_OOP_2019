@@ -41,6 +41,11 @@ void SachNgoaiVan::setMaISBN(string isbn)
 	ISBN = isbn;
 }
 
+void SachNgoaiVan::set_Gia(float gia)
+{
+	Gia = gia;
+}
+
 
 void SachNgoaiVan::Sua()
 {

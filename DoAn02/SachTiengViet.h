@@ -12,6 +12,7 @@ public:
 	void Xuat();
 	void Sua();
 	void setMaISBN(string isbn);
+	void set_Gia(float gia);
 	void XuatFile(ofstream out);
 };
 

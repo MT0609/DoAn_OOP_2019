@@ -22,7 +22,6 @@ public:
 	void TimSach(string Ma);
 	void XuatSach();
 
-
 	void NhapDocGia(ifstream & in);
 	void ThemDocGia();
 	void TimDocGia(string Ma);

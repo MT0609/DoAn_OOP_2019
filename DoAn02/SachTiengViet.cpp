@@ -35,6 +35,11 @@ void SachTiengViet::setMaISBN(string isbn)
 {
 }
 
+void SachTiengViet::set_Gia(float gia)
+{
+	Gia = gia;
+}
+
 void SachTiengViet::XuatFile(ofstream out)
 {
 	Sach::XuatFile(out);

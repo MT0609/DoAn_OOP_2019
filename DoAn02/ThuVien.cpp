@@ -11,10 +11,9 @@ ThuVien::~ThuVien()
 
 void ThuVien::NhapSach(ifstream & in)
 {
-	int sl_sach;
-	in >> sl_sach;
 	Sach* sach;
-	for (int i = 0; i < sl_sach; ++i)
+	int giaSach;
+	while (!in.eof())
 	{
 		int loai;
 		in >> loai;
@@ -42,6 +41,10 @@ void ThuVien::NhapSach(ifstream & in)
 			getline(in, str);
 			sach->setMaISBN(str);
 		}
+
+		in >> giaSach;
+		sach->set_Gia(giaSach);
+
 		books.push_back(sach);
 	}
 }
@@ -55,7 +58,7 @@ void ThuVien::ThemSach()
 	do
 	{
 		cout << "Nhap thong tin sach muon them: " << endl;
-		cout << "Sach tieng viet hay sach ngoai van: ";
+		cout << "Sach tieng viet (1) / sach ngoai van (2): ";
 		cin >> flag;
 		if (flag == '1')
 			sach = new SachTiengViet;
@@ -64,7 +67,7 @@ void ThuVien::ThemSach()
 		sach->Nhap();
 		books.push_back(sach);
 
-		cout << "Nhap tiep (1 - tiep tuc): ";
+		cout << "Nhap tiep thong tin sach (1 - tiep tuc): ";
 		cin >> flag;
 	} while (flag == '1');
 }
@@ -126,6 +129,11 @@ void ThuVien::TimSach(string Ma)
 
 void ThuVien::XuatSach()
 {
+	if (books.size() == 0)
+	{
+		cout << "danh sach rong! ";
+		return;
+	}
 	for (int i = 0; i < books.size(); ++i)
 	{
 		books[i]->Xuat();
@@ -135,15 +143,11 @@ void ThuVien::XuatSach()
 
 void ThuVien::NhapDocGia(ifstream & in)
 {
-	int sl_DocGia;
-	in >> sl_DocGia;
-	cout << sl_DocGia << endl;
 	DocGia reader;
-	for (int i = 0; i < sl_DocGia; ++i)
+	while (!in.eof())
 	{
 		reader.phieu_muon.clear();
 		string str;
-		in.get();
 		getline(in, str);
 		reader.set_Ma(str);
 
@@ -161,7 +165,6 @@ void ThuVien::NhapDocGia(ifstream & in)
 			reader.phieu_muon[str] = ngayMuon;
 		}
 		readers.push_back(reader);
-		readers[i].Xuat();
 	}
 }
 

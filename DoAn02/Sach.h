@@ -28,6 +28,7 @@ public:
 	void set_NXB(string NXB);
 	void set_TacGia(string tacgia);
 	virtual void setMaISBN(string isbn) = 0;
+	virtual void set_Gia(float gia) = 0;
 	virtual void Sua();
 	virtual void XuatFile(ofstream & out);
 };
