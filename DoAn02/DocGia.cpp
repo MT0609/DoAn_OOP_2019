@@ -83,13 +83,26 @@ void DocGia::Xuat()
 
 void DocGia::XuatFile(ofstream & out)
 {
-	out << Ma << endl;
-	out << HoTen << endl;
-	out << phieu_muon.size() << endl;
+	out << "Ma doc gia: " << Ma << endl;
+	out << "Ho ten doc gia: " << HoTen << endl;
 	for (auto pair : phieu_muon)
 	{
-		out << pair.first << endl;
-		out << pair.second << endl;
+		int dd = pair.second / 1000000;
+		int mm = (pair.second / 10000) % 100;
+		int yyyy = pair.second % 10000;
+		out << "Ma sach muon: " << pair.first << " - " << "Ngay muon: " << dd << "/" << mm << "/" << yyyy << endl;
+	}
+}
+
+void DocGia::xuatFileCauTruc(ofstream & out)
+{
+	out << endl << phieu_muon.size();
+	out << endl << Ma;
+	out << endl << HoTen;
+	for (auto pair : phieu_muon)
+	{
+		out << endl << pair.first;
+		out << endl << pair.second;
 	}
 }
 

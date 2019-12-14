@@ -111,5 +111,17 @@ Menu:
 		cin >> flag;
 	} while (flag == 1);
 
+	cout << "Nhap duong dan file cau truc luu thong tin sach: ";
+	cin >> str;
+	out.open(str);
+	lib.xuatFileCauTruc_Sach(out);
+	out.close();
+
+	cout << "Nhap duong dan file cau truc luu thong tin doc gia: ";
+	cin >> str;
+	out.open(str);
+	lib.xuatFileCauTruc_DocGia(out);
+	out.close();
+
 	system("pause");
 }

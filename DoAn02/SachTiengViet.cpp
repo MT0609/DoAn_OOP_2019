@@ -44,3 +44,8 @@ void SachTiengViet::XuatFile(ofstream out)
 {
 	Sach::XuatFile(out);
 }
+
+void SachTiengViet::xuatFileCauTruc(ofstream & out)
+{
+	Sach::xuatFileCauTruc(out);
+}

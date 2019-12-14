@@ -29,6 +29,7 @@ public:
 	void Xuat();
 	void Sua();
 	void XuatFile(ofstream &out);
+	void xuatFileCauTruc(ofstream &out);
 	int get_songayMuon(int ngaymuon); // so voi thoi gian he thong
 };
 

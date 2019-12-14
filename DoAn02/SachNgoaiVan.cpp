@@ -59,3 +59,9 @@ void SachNgoaiVan::Sua()
 		getline(cin, ISBN);
 	}
 }
+
+void SachNgoaiVan::xuatFileCauTruc(ofstream & out)
+{
+	Sach::xuatFileCauTruc(out);
+	out << endl << ISBN;
+}

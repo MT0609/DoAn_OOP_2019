@@ -31,5 +31,5 @@ public:
 	virtual void set_Gia(float gia) = 0;
 	virtual void Sua();
 	virtual void XuatFile(ofstream & out);
+	virtual void xuatFileCauTruc(ofstream & out);
 };
-

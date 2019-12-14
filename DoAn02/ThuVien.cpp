@@ -12,7 +12,6 @@ ThuVien::~ThuVien()
 void ThuVien::NhapSach(ifstream & in)
 {
 	Sach* sach;
-	int giaSach;
 	while (!in.eof())
 	{
 		int loai;
@@ -36,15 +35,17 @@ void ThuVien::NhapSach(ifstream & in)
 		getline(in, str);
 		sach->set_NXB(str);
 
-		if (loai == 2)
-		{
-			getline(in, str);
-			sach->setMaISBN(str);
-		}
-
+		int giaSach;
 		in >> giaSach;
 		sach->set_Gia(giaSach);
 
+		if (loai == 2)
+		{
+			in.get();
+			getline(in, str);
+			sach->setMaISBN(str);
+		}
+		sach->Xuat();
 		books.push_back(sach);
 	}
 }
@@ -136,34 +137,38 @@ void ThuVien::XuatSach()
 	}
 	for (int i = 0; i < books.size(); ++i)
 	{
+		cout << endl << "Thong tin cuon sach thu " << i + 1 << endl;
 		books[i]->Xuat();
 		cout << endl;
 	}
 }
 
+
 void ThuVien::NhapDocGia(ifstream & in)
 {
 	DocGia reader;
+	string str;
+	int sl_sachMuon;
+
 	while (!in.eof())
 	{
+		in >> sl_sachMuon;
 		reader.phieu_muon.clear();
-		string str;
+		in.get();
 		getline(in, str);
 		reader.set_Ma(str);
 
 		getline(in, str);
 		reader.set_Ten(str);
-
-		int sl_sachMuon;
-		in >> sl_sachMuon;
+		
 		for (int j = 0; j < sl_sachMuon; ++j)
 		{
+			getline(in, str);	// ma sach muon	
 			int ngayMuon;
 			in >> ngayMuon;
-			in.get();
-			getline(in, str);	// ma sach muon	
 			reader.phieu_muon[str] = ngayMuon;
 		}
+		reader.Xuat();
 		readers.push_back(reader);
 	}
 }
@@ -179,7 +184,7 @@ void ThuVien::ThemDocGia()
 		dg.Nhap();
 		readers.push_back(dg);
 
-		cout << "Nhap tiep (1 - tiep tuc): ";
+		cout << "Nhap tiep danh sach doc gia (1 / other): ";
 		cin >> flag;
 	} while (flag == '1');
 }
@@ -301,22 +306,20 @@ void ThuVien::XuatFile(ofstream & out)
 	}
 }
 
-void ThuVien::XuatFileSach(ofstream & out)
+void ThuVien::xuatFileCauTruc_Sach(ofstream & out)
 {
-	out << books.size() << endl;
 	for (int i = 0; i < books.size(); ++i)
 	{
 		if (books[i]->getType() == 1)
-			out << 1 << endl;
+			out << endl << 1;
 		else
-			out << 2 << endl;
-		books[i]->XuatFile(out);
+			out << endl << 2;
+		books[i]->xuatFileCauTruc(out);
 	}
 }
 
-void ThuVien::XuatFileDocGia(ofstream & out)
+void ThuVien::xuatFileCauTruc_DocGia(ofstream & out)
 {
-	out << readers.size() << endl;
 	for (int i = 0; i < readers.size(); ++i)
-		readers[i].XuatFile(out);
+		readers[i].xuatFileCauTruc(out);
 }

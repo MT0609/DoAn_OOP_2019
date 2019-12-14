@@ -15,5 +15,6 @@ public:
 	void setMaISBN(string isbn);
 	void set_Gia(float gia);
 	void Sua();
+	void xuatFileCauTruc(ofstream & out);
 };
 

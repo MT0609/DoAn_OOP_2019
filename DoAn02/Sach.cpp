@@ -17,13 +17,10 @@ void Sach::Nhap()
 	cin.ignore();
 	getline(cin, Ma);
 	cout << "Nhap ten sach: ";
-	cin.ignore();
 	getline(cin, Ten);
 	cout << "Nhap tac gia: ";
-	cin.ignore();
 	getline(cin, TacGia);
 	cout << "Nhap Nha xuat ban: ";
-	cin.ignore();
 	getline(cin, NXB);
 	cout << "Nhap gia sach: ";
 	cin >> Gia;
@@ -132,10 +129,18 @@ void Sach::Sua()
 
 void Sach::XuatFile(ofstream & out)
 {
-	out << Ma << endl;
-	out << Ten << endl;
-	out << TacGia << endl;
-	out << NXB << endl;
-	out << Gia << endl;
+	out << "Ma sach: "<< Ma << endl;
+	out << "Ten sach: " << Ten << endl;
+	out << "Tac gia: " << TacGia << endl;
+	out << "NXB: " << NXB << endl;
+	out << "Gia sach: " << Gia << endl;
 }
 
+void Sach::xuatFileCauTruc(ofstream & out)
+{
+	out << endl << Ma;
+	out << endl << Ten;
+	out << endl << TacGia;
+	out << endl << NXB;
+	out << endl << Gia;
+}

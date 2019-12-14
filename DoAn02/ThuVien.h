@@ -35,7 +35,7 @@ public:
 	void XuatFile(ofstream & out);
 
 	// Lưu File có cấu trúc cho việc load dữ liệu sau này
-	void XuatFileSach(ofstream &out);
-	void XuatFileDocGia(ofstream &out);
+	void xuatFileCauTruc_Sach(ofstream &out);
+	void xuatFileCauTruc_DocGia(ofstream &out);
 };
 
