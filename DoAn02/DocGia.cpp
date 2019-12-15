@@ -59,6 +59,7 @@ void DocGia::Nhap()
 			break;
 		string ma_sach;
 		cout << "Nhap ma sach muon: ";
+		cin.ignore();
 		getline(cin, ma_sach);
 		Date date;
 		cout << "Nhap ngay muon (dd): ";
@@ -109,19 +110,49 @@ void DocGia::xuatFileCauTruc(ofstream & out)
 void DocGia::Sua()
 {
 	int key;
-	cout << "Ban muon sua ma doc gia? ";
+	cout << "Ban muon sua ma doc gia? (1 / other): ";
 	cin >> key;
 	if (key == 1)
 	{
 		cout << "Nhap Ma moi: ";
-		cin >> Ma;
+		cin.ignore();
+		getline(cin, Ma);
 	}
+
 	cout << "Ban muon sua ten doc gia? ";
 	cin >> key;
-	if (key == 2)
+	if (key == 1)
 	{
 		cout << "Nhap ho ten moi: ";
-		cin >> HoTen;
+		cin.ignore();
+		getline(cin, HoTen);
+	}
+
+	cout << "Ban muon Xoa (1) / Them, Sua (2) sach trong phieu muon? ";
+	cin >> key;
+	if (key == 1)
+	{
+		string id;
+		cout << "Nhap ma sach muon xoa: ";
+		cin.ignore();
+		getline(cin, id);
+		phieu_muon.erase(id);
+	}
+	if (key == 2)
+	{
+		string id;
+		cout << "Nhap ma sach muon them/sua thong tin (neu da ton tai thi sua thong tin): ";
+		cin.ignore();
+		getline(cin, id);
+
+		Date date;
+		cout << "Nhap ngay muon (dd): ";
+		cin >> date.Ngay;
+		cout << "Nhap thang muon (mm): ";
+		cin >> date.Thang;
+		cout << "Nhap nam muon (yyyy): ";
+		cin >> date.Nam;
+		phieu_muon.insert_or_assign(id, date.Ngay * 1000000 + date.Thang * 10000 + date.Nam);
 	}
 }
 

@@ -45,7 +45,6 @@ void ThuVien::NhapSach(ifstream & in)
 			getline(in, str);
 			sach->setMaISBN(str);
 		}
-		sach->Xuat();
 		books.push_back(sach);
 	}
 }
@@ -168,7 +167,6 @@ void ThuVien::NhapDocGia(ifstream & in)
 			in >> ngayMuon;
 			reader.phieu_muon[str] = ngayMuon;
 		}
-		reader.Xuat();
 		readers.push_back(reader);
 	}
 }

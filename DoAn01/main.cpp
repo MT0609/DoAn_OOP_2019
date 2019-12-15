@@ -76,13 +76,16 @@ void main()
 	cout << endl << "Iterator: ";
 	for (MyString::iterator it = str.begin(); it != str.end(); ++it)
 		cout << *it;
+	cout << endl << "Reverse_Iterator: ";
+	for (MyString::reverse_iterator it = str.rbegin(); it != str.rend(); --it)
+		cout << *it;
 	cout << endl;
 
 	MyString a("There are two needles in this haystack with needles.");
 	MyString b("needle");
 
 	int found = a.find(b);
-	cout << "first 'needle' found at: " << found << '\n';
+	cout << endl << "first 'needle' found at: " << found << '\n';
 
 	found = a.find("haystack");
 	cout << "'haystack' also found at: " << found << '\n';
@@ -117,7 +120,7 @@ void main()
 
 	MyString f;
 	cout << endl << "Nhap chuoi test getline: ";
-	getline(cin, f, '\t');
+	getline(cin, f);
 	cout << "Chuoi vua nhap: " << f << endl;
 	const char* cstr = "test string";
 	if (memcmp(cstr, f.data(), f.length()) == 0)
@@ -125,6 +128,7 @@ void main()
 
 
 	cout << endl << "swap(x, y): " << endl;
+	cout << "(x: " << e << "; y: " << f << "): " << endl;
 	swap(e, f);
 	cout << '\t' << e << endl;
 	cout << '\t' << f << endl;

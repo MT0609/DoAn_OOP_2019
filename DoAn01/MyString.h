@@ -34,7 +34,6 @@ public:
 	private:
 		char* pointer;
 	};
-
 	class const_iterator
 	{
 	public:
@@ -52,16 +51,48 @@ public:
 	private:
 		char* pointer;
 	};
-
+	class reverse_iterator
+	{
+	public:
+		typedef char value_type;
+		typedef char& reference;
+		typedef random_access_iterator_tag iterator_category;
+		typedef int difference_type;
+		reverse_iterator(char* ptr) : pointer(ptr) { }
+		reverse_iterator operator--(int) { reverse_iterator i = *this; pointer--; return i; }
+		reverse_iterator operator--() { pointer--; return *this; }
+		reference operator*() { return *pointer; }
+		char* operator->() { return pointer; }
+		bool operator==(const reverse_iterator& rhs) { return pointer == rhs.pointer; }
+		bool operator!=(const reverse_iterator& rhs) { return pointer != rhs.pointer; }
+	private:
+		char* pointer;
+	};
+	class const_reverse_iterator
+	{
+	public:
+		typedef char value_type;
+		typedef char& reference;
+		typedef random_access_iterator_tag iterator_category;
+		typedef int difference_type;
+		const_reverse_iterator(char* ptr) : pointer(ptr) { }
+		const_reverse_iterator operator--(int) { const_reverse_iterator i = *this; pointer--; return i; }
+		const_reverse_iterator operator--() { pointer--; return *this; }
+		reference operator*() { return *pointer; }
+		char* operator->() { return pointer; }
+		bool operator==(const const_reverse_iterator& rhs) { return pointer == rhs.pointer; }
+		bool operator!=(const const_reverse_iterator& rhs) { return pointer != rhs.pointer; }
+	private:
+		char* pointer;
+	};
 	iterator begin() { return iterator(a); }
 	iterator end() { return iterator(a + len); }
-	iterator rbegin() { return iterator(a + len); };
-	iterator rend() { return iterator(a); }
+	reverse_iterator rbegin() { return reverse_iterator(a + len - 1); };
+	reverse_iterator rend() { return reverse_iterator(a - 1); }
 	const_iterator cbegin() const { return const_iterator(a); }
 	const_iterator cend() const { return const_iterator(a + len); }
 	const_iterator crbegin() const { return const_iterator(a + len - 1); }
-	const_iterator crend() const { return const_iterator(a); }
-
+	const_iterator crend() const { return const_iterator(a - 1); }
 
 		//CAPACITY
 	void clear();
@@ -93,15 +124,9 @@ public:
 	void pop_back();
 	void swap(MyString & str);
 	void assign(char x, int i); // gan ki tu o chi so i = x
-
 	MyString erase(int pos, int len);
 	MyString erase(int pos);		// xoa ki tu o chi so pos
-	char getChar(int i);	// lay o chi so thu i
 	
-	
-	//MyString ChuanHoa();
-	//MyString DaoChuoi();
-
 		// STRING OPERATIONS
 	const char* c_str() const;
 	const char* data() const;

@@ -56,11 +56,6 @@ MyString & MyString::operator=(const MyString & str)
 
 void MyString::Input()
 {
-	/*cout << "Nhap do dai chuoi: ";
-	cin >> len;
-	cin.ignore();
-	a = new char[len + 1];
-	cin.getline(a, len + 1);*/
 	char key;
 	int value;
 	while (1)
@@ -234,12 +229,6 @@ MyString MyString::erase(int pos)
 	return *this;
 }
 
-char MyString::getChar(int i)
-{
-	if (i >= 0 && i < len)
-		return a[i];
-}
-
 void MyString::assign(char x, int i)
 {
 	if (i < 0 || i >= this->len)
@@ -289,32 +278,6 @@ void MyString::swap(MyString & str)
 	for (int i = 0; i < str.len; ++i)
 		str.a[i] = newstr.a[i];
 	str.a[str.len] = '\0';
-
-	/*if (len > str.len)
-	{
-		int t = str.len;
-		str.a = (char*)realloc(str.a, len * sizeof(char));
-		for (int i = 0; i < len; ++i)
-		{
-			char temp = a[i];
-			a[i] = str.a[i];
-			str.a[i] = temp;
-		}
-		str.a[this->len] = '\0';
-		a[t] = '\0';
-	}
-	else if (len < str.len)
-	{
-		a = (char*)realloc(a, str.len * sizeof(char));
-		for (int i = 0; i < str.len; ++i)
-		{
-			char temp = a[i];
-			a[i] = str.a[i];
-			str.a[i] = temp;
-		}
-		a[str.len] = '\0';
-		str.a[this->len] = '\0';
-	}*/
 }
 
 
@@ -365,25 +328,6 @@ void MyString::push_back(char c)
 	a[this->len - 1] = c;
 	a[this->len] = '\0';
 }
-
-//MyString MyString::ChuanHoa()
-//{
-//	while (a[0] == ' ') this->erase(0);
-//	while (a[len - 1] == ' ' && len >= 0) this->erase(len - 1);
-//	for (int i = 0; i < len - 1; ++i)
-//	{
-//		while (a[i] == ' ' && a[i + 1] == ' ')
-//			this->erase(i);
-//	}
-//	return *this;
-//}
-
-//MyString MyString::DaoChuoi()
-//{
-//	for (int i = 0; i < len / 2; ++i)
-//		swap(this->a[i], a[len - i - 1]);
-//	return *this;
-//}
 
 bool MyString::operator>(const MyString & str)
 {
@@ -777,29 +721,6 @@ void swap(MyString & x, MyString & y)
 
 istream & operator>>(istream & is, MyString & str)
 {
-	/*cout << "Nhap do dai cua chuoi: ";
-	is >> str.len;
-	str.a = new char[str.len];
-	fflush(stdin);
-	is.getline(str.a, str.len);
-	return is;*/
-
-	/*char key;
-	int value;
-	while (1)
-	{
-		key = _getch();
-		value = key;
-		if (value == 13)
-			break;
-		cout << key;
-		++str.len;
-		str.a = (char*)realloc(str.a, str.len * sizeof(char));
-		str.a[str.len - 1] = key;
-	}
-	str.a[str.len] = '\0';
-	cout << endl;
-	return is;*/
 	char* input = new char[100];
 	is.getline(input, 100);
 
